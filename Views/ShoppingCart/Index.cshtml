@@ -1,0 +1,94 @@
+﻿@model Nhom2_Chieu5_DoAnCuoiMon_WebBanQuanAo.Models.ShoppingCart
+
+
+@{
+	ViewData["Title"] = "Order Completed";
+	Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<h2 style="text-align:center">THÔNG TIN GIỎ HÀNG</h2>
+<table class="table" align="center" border="1">
+	<thead>
+		<tr style="text-align:center; font-weight:bold">
+			<td> Tên Sản phẩm </td>
+			<td> Hình ảnh </td>
+			<td> Số lượng </td>
+			<td> Đơn giá </td>
+			<td> Thành tiền </td>
+			<td width="50px"></td>
+			<td width="50px"></td>
+			<td width="50px"></td>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model.Items)
+		{
+			<tr style="text-align:center; font-weight:bold">
+				<td> @Html.DisplayFor(modelItem => item.Name) </td>
+				<td> <img src="~/images/@item.ImageUrl" width="100px" height="100px" /> </td>
+				<td>
+					<input id="txtQuantity_@item.ProductId" 
+							onchange="updateCart('@item.ProductId')" 
+							type="number" min="1" 
+							name="txtQuantity" 
+							value="@item.Quantity"
+							style="background-color:yellow" />
+				</td>
+				<td> @string.Format("{0:0,000}", item.Price) </td>
+				<td> @string.Format("{0:0,000}", item.Price * item.Quantity) </td>
+				<td> <a asp-controller="Product" asp-action="Display" asp-route-id="@item.ProductId">Chi tiết</a> </td>
+				<td> <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@item.ProductId">Xóa</a></td>
+			</tr>
+		}
+		<tr style="font-weight:bold; text-align:right; color:red">
+			<td colspan="5"> Tổng Số: @ViewBag.TongSoLuong </td>
+			<td colspan="5">
+				Tổng tiền: @String.Format("{0:0,000}", ViewBag.TongTien) VNĐ
+			</td>
+		</tr>
+		<tr style="font-weight:bold; color:blue; text-align:right">
+			<td colspan="9"> <a asp-action="Delete">Xóa Giỏ Hàng</a></td>
+		</tr>
+		<tr style="font-weight:bold; color:blue; text-align:right">
+			<td colspan="9" align="center">
+				<a asp-controller="ShoppingCart" asp-action="OrderCompleted">Đặthàng</a> 
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+@section scripts {
+	<script>
+		function updateCart(productId) {
+			var quantity = document.getElementById('txtQuantity_' + productId).value;
+			window.location.href = '/ShoppingCart/UpdateCart?id=' + productId +	'&quantity=' + quantity;
+		}
+	</script>
+}
+
+
+@* @model ShoppingCart
+<h2>Your Cart</h2>
+<table>
+	 <tr>
+		 <th>Product</th>
+		 <th>Quantity</th>
+		 <th>Price</th>
+		 <th>Total</th>
+	 </tr>
+	@foreach (var item in Model.Items)
+	{
+	<tr>
+		<td>@item.Name</td>
+		<td>@item.Quantity</td>
+		<td>@item.Price</td>
+		<td>@(item.Price * item.Quantity)</td>
+		<td>
+			<a asp-action="RemoveFromCart" asp-route-productId="@item.ProductId">Remove</a>
+		</td>
+	</tr>
+	}
+	<td>
+		<a asp-area="" asp-controller="ShoppingCart" asp-action="Checkout" class="btn btn-primary">Checkout</a>
+	</td>
+</table> *@

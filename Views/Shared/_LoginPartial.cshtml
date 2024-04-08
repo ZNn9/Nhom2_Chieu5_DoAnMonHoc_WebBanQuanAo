@@ -1,0 +1,47 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!-- Css Styles -->
+<link href="~/css/custom.css" rel="stylesheet" />
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/Index", new { area = "" })" method="post" id="logoutForm" class="navbar-nav ms-auto">
+        <div class="" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">
+            @* @UserManager.GetUserName(User) *@
+            @UserManager.GetUserAsync(User).Result.FullName
+
+            <span class="arrow_carrot-down"></span>
+        </div>
+        <ul class="">
+            @if (User.IsInRole("Admin") || User.IsInRole("Employee"))
+            {
+                <li class="">
+                    <a class="" asp-area="Admin" asp-controller="HomeAdmin" title="Admin">Dash Board</a>
+                </li>
+            }
+            <li class="">
+                <a class="" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Thông tin cá nhân</a>
+            </li>
+            <li class="">
+                <button type="submit" class="">Logout</button>
+            </li>
+        </ul>
+    </form> 
+}
+else
+{
+    <div class="">
+        Account
+        <span class="arrow_carrot-down"></span>
+    </div>
+    
+    <ul class="">
+        <li class="">
+            <a class="" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        </li>
+        <li class="">
+            <a class="" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    </ul>
+}

@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Display";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model ApplicationUser
+
+<h2>User Details</h2>
+
+<div>
+    <label>Username:</label>
+    <div>@Model.UserName</div>
+</div>
+<div>
+    <label>Email:</label>
+    <div>@Model.Email</div>
+</div>
+<!-- Add other fields as necessary -->

@@ -1,0 +1,114 @@
+﻿
+@{
+    Layout = "";
+}
+
+<!doctype html>
+<html 
+    lang="en"
+    class="light-style customizer-hide"
+    dir="ltr"
+
+@*  <!-- Không biết các dùng các dòng code này -->   
+    data-theme="theme-default"
+    data-assets-path="~/DashBoard_Sneat/assets/"
+    data-template="vertical-menu-template-free" *@
+>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Nhom2_Chieu5_DoAnCuoiMon_WebBanQuanAo.styles.css" asp-append-version="true" />
+
+    <title>LOGIN - NNN</title>
+
+    <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="~/DashBoard_Sneat/assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet" />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    @* <link rel="stylesheet" href="~/DashBoard_Sneat/assets/vendor/fonts/boxicons.css" /> *@
+    <link href="~/dashboard_sneat/assets/vendor/fonts/boxicons.css" rel="stylesheet" />
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="~/DashBoard_Sneat/assets/vendor/css/core.css" class="template-customizer-core-css" />
+    <link rel="stylesheet" href="~/DashBoard_Sneat/assets/vendor/css/theme-default.css" class="template-customizer-theme-css" />
+    <link rel="stylesheet" href="~/DashBoard_Sneat/assets/css/demo.css" />
+	
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="~/DashBoard_Sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="~/DashBoard_Sneat/assets/vendor/css/pages/page-auth.css" />
+    <!-- Helpers -->
+    <script src="~/DashBoard_Sneat/assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="~/DashBoard_Sneat/assets/js/config.js"></script>
+    <title>@ViewData["Title"]</title>
+
+</head>
+<body>
+    <!-- Content -->
+
+    <div class="container-xxl">
+        <div class="authentication-wrapper authentication-basic container-p-y">
+            <div class="authentication-inner">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <!-- Content -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <!-- Core JS -->
+    <!-- build:js assets/vendor/js/core.js -->
+    <script src="~/DashBoard_Sneat/assets/vendor/libs/jquery/jquery.js"></script>
+    <script src="~/DashBoard_Sneat/assets/vendor/libs/popper/popper.js"></script>
+    <script src="~/DashBoard_Sneat/assets/vendor/js/bootstrap.js"></script>
+    <script src="~/DashBoard_Sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+
+    <script src="~/DashBoard_Sneat/assets/vendor/js/menu.js"></script>
+    <!-- endbuild -->
+    <!-- Vendors JS -->
+    <!-- Main JS -->
+    <script src="~/DashBoard_Sneat/assets/js/main.js"></script>
+
+    <!-- Page JS -->
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!-- * -->
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
+@* Nếu sử dụng layout khác làm tiền đề thì sử dụng "@section Scripts" này *@
+@* @section Scripts{
+    @await RenderSectionAsync("Scripts", required: false)
+    <script>
+        $(function () {
+            const currentPage = location.pathname;
+            $('.nav-tabs li a').each(function () {
+                const $this = $(this);
+                if (currentPage.toLowerCase().indexOf($this.attr('href').toLowerCase()) != -1) {
+                    $this.addClass('active')
+                }
+            })
+        })
+    </script>
+} *@

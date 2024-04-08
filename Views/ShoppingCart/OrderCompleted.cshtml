@@ -1,0 +1,18 @@
+﻿@* @model int
+<h2>Order Completed</h2>
+<p>Your order with ID @Model has been placed successfully.</p> *@
+
+@model Nhom2_Chieu5_DoAnCuoiMon_WebBanQuanAo.Models.Order
+@{
+	ViewData["Title"] = "Order";
+	Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+<h2>
+	Order Completed
+</h2>
+<p>
+	Your order with ID @Model.Id has been placed successfully.
+</p>
+<div>
+	<a asp-action="Index" asp-controller="Products">Về Trang Chủ</a>
+</div>
